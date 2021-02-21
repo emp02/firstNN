@@ -89,10 +89,9 @@ class Net(nn.Module):
         # Repeat MaxPool2d
         # Then Output size = 5 x 5 x 16 = 400
 
-        self.fc1 = nn.Linear(1944, 972)
-        self.fc2 = nn.Linear(972, 324)
-        self.fc3 = nn.Linear(324, 81)
-        self.fc4 = nn.Linear(81, 10)
+        self.fc1 = nn.Linear(1944, 400)
+        self.fc2 = nn.Linear(400, 80)
+        self.fc3 = nn.Linear(80, 10)
 
     def forward(self, x):
         x = self.activation(self.conv1(x))
@@ -112,9 +111,8 @@ class Net(nn.Module):
         #x = self.batchNormalization972(x)
         x = self.activation(self.fc2(x))
         #x = self.batchNormalization324(x)
-        x = self.activation(self.fc3(x))
         #x = self.batchNormalization81(x)
-        x = self.fc4(x)
+        x = self.fc3(x)
         #x = self.dropout40(x)
         return x
 
